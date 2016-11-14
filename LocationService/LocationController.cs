@@ -18,5 +18,19 @@ namespace LocationService
         {
             return Request.CreateResponse(HttpStatusCode.OK, new {Result = "pong"});
         }
+
+        [Route("api/v1/client/{clientId}/location")]
+        [HttpGet]
+        public HttpResponseMessage GetLocationClient([FromUri] Guid clientId)
+        {
+            throw new NotImplementedException();
+        }
+
+        [Route("api/v1/client/{clientId}/location")]
+        [HttpPost]
+        public HttpResponseMessage SetLocationClient([FromUri] Guid clientId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

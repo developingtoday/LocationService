@@ -14,7 +14,7 @@ namespace LocationService
 
         public void Start()
         {
-            var adress = @"http://localhost:10280/locationserv";
+            var adress = @"http://localhost:10280/locationserv"; //todo add a config key
             _disposable = WebApp.Start(adress);
             Console.WriteLine("Web application started on:{0}",adress);
         }

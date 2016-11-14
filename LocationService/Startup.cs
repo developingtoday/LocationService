@@ -57,6 +57,7 @@ namespace LocationService
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
             Debug.WriteLine(actionExecutedContext.Exception);
+            Console.WriteLine(actionExecutedContext.Exception);
             actionExecutedContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError);
         }
     }
