@@ -10,7 +10,9 @@ namespace LocationService
     {
         static void Main(string[] args)
         {
-            
+            var location=new LocationService();
+            location.Start();
+            Console.ReadKey();
         }
     }
 }
