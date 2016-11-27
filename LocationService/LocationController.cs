@@ -11,6 +11,11 @@ namespace LocationService
 {
     public class LocationController:ApiController
     {
+        private readonly ILocationManager _locationManager;
+        public LocationController()
+        {
+            _locationManager = new LocationManager();
+        }
 
         [Route("api/v1/ping")]
         [HttpGet]
@@ -23,14 +28,17 @@ namespace LocationService
         [HttpGet]
         public HttpResponseMessage GetLocationClient([FromUri] Guid clientId)
         {
-            throw new NotImplementedException();
+            return Request.CreateResponse(HttpStatusCode.OK, _locationManager.RetrieveLocations(clientId));
         }
 
-        [Route("api/v1/client/{clientId}/location")]
+        [Route("api/v1/client/location")]
         [HttpPost]
-        public HttpResponseMessage SetLocationClient([FromUri] Guid clientId)
+        public async Task<HttpResponseMessage> SetLocationClient([FromBody] LocationRequest request)
         {
-            throw new NotImplementedException();
+            await _locationManager.UpdateLocation(request);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
+
+   
 }
